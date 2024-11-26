@@ -15,4 +15,6 @@ Watchers: https://snoblin.itch.io/pixel-rpg-free-npc
 Tables: https://www.deviantart.com/silvervoidart/art/Pixel-Tables-01-923153577
 Chairs: https://www.deviantart.com/silvervoidart/art/Pixel-Chairs-02-923150047
 
+Secret battleground: https://kr.pinterest.com/pin/421297740140000871/
+
 All sounds taken from https://pixabay.com.

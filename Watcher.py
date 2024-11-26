@@ -1,6 +1,8 @@
 import pygame
 
+#Watcher class
 class Watcher(pygame.sprite.Sprite):
+    #Constructor
     def __init__(self, x, y, direction, threshold):
         super().__init__()
         self.direction = direction
@@ -11,13 +13,17 @@ class Watcher(pygame.sprite.Sprite):
         self.frame_count = 0
         self.threshold = threshold
     
+    #Move watcher (make it change directions)
     def update(self):
+        #Increment frame count
         self.frame_count += 1
         
+        #If frame count reaches threshold, change direction
         if self.frame_count == self.threshold:
             self.frame_count = 0
             offset = 70
 
+            #Change direction
             if self.direction == "left":
                 self.direction = "right"
                 self.rect.x += offset
@@ -31,5 +37,6 @@ class Watcher(pygame.sprite.Sprite):
                 self.direction = "forward"
                 self.rect.y -= offset
             
+            #Update image for new direction
             self.image = pygame.image.load(f"media/watcher_{self.direction}.png")
         

@@ -11,8 +11,11 @@ import constants
 
 import SceneSetter
 
+#Initialize game via singleton
 SceneSetter.initialize()
 
+#Top-level game loop
+#Handles switching between scenes/levels
 while True:
     SceneSetter.SCREEN.fill(colors.BLACK)
 
@@ -21,6 +24,7 @@ while True:
             pygame.quit()
             sys.exit()
     
+    #Scene switching
     if SceneSetter.current_scene == "credits":
         SceneSetter.loadCreditScene()
     elif SceneSetter.current_scene == "story":
@@ -47,6 +51,8 @@ while True:
         SceneSetter.loadStoryScene(story.thanksgiving_failure, "thanksgiving")
     elif SceneSetter.current_scene == "christmas_failure":
         SceneSetter.loadStoryScene(story.christmas_failure, "christmas")
+    elif SceneSetter.current_scene == "secret_failure":
+        SceneSetter.loadStoryScene(story.secret_failure, "secret")
     elif SceneSetter.current_scene == "halloween_aftermath":
         SceneSetter.loadStoryScene(story.halloween_aftermath, "menu")
     elif SceneSetter.current_scene == "thanksgiving_aftermath":
@@ -54,10 +60,14 @@ while True:
     elif SceneSetter.current_scene == "christmas_aftermath":
         SceneSetter.loadStoryScene(story.christmas_aftermath, "menu")
     elif SceneSetter.current_scene == "secret_aftermath":
-        SceneSetter.loadStoryScene(story.secret_aftermath, "credits")
+        SceneSetter.loadStoryScene(story.secret_aftermath, None)
+        pygame.quit()
+        sys.exit()
     
+    #Draw custom cursor
     SceneSetter.CURSOR_RECT.center = pygame.mouse.get_pos()
     SceneSetter.SCREEN.blit(images.CURSOR, SceneSetter.CURSOR_RECT)
 
+    #Tick
     pygame.display.update()
     SceneSetter.FPS_CLOCK.tick(constants.FPS)
