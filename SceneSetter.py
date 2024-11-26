@@ -114,7 +114,7 @@ def loadStoryScene(strings, next_scene):
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONUP:
                     mouse_click = True
-                    pygame.mixer.music.play(click_sound)
+                    pygame.mixer.Sound.play(click_sound)
                 elif event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
