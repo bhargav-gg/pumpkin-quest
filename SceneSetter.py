@@ -96,7 +96,7 @@ def loadStoryScene(strings, next_scene):
     story_font = pygame.font.SysFont("Cascadia Code", constants.WIDTH // 20)
 
     #Click noise when player clicks through story
-    click_sound = pygame.mixer.music("media/click.mp3")
+    click_sound = pygame.mixer.Sound("media/click.wav")
 
     #Loop through each segment of the story, only proceeding to next segment when the player clicks
     for segment in strings:
@@ -144,7 +144,7 @@ def loadMenuScene():
     secret_button = Button.Button(colors.RED, colors.WHITE, (constants.WIDTH // 2) - (constants.WIDTH // 8), constants.HEIGHT // 2, constants.WIDTH // 4, constants.HEIGHT // 8, font, "???")
 
     #Click noise
-    click_sound = pygame.mixer.music("media/click.mp3")
+    click_sound = pygame.mixer.Sound("media/click.wav")
 
     #Button group list to determine which buttons to render
     button_group = [halloween_button]
@@ -212,8 +212,8 @@ def loadHalloweenScene():
     darkness = SpriteFactory.createSprite("Object", 0, 0, image_path="media/darkness.png")
 
     #Footsteps, ding sound
-    footstep_sound = pygame.mixer.music("media/footsteps.mp3")
-    ding_sound = pygame.mixer.music("media/ding.mp3")
+    footstep_sound = pygame.mixer.Sound("media/footsteps.wav")
+    ding_sound = pygame.mixer.Sound("media/ding.wav")
 
     #Text frame count for pumpkin acquired message (lasts for 180 frames/3 seconds)
     text_frame_count = 0
@@ -346,15 +346,15 @@ def loadThanksgivingScene():
 
     #Ding
     ding_channel = pygame.mixer.Channel(0)
-    ding_sound = pygame.mixer.music("media/ding.mp3")
+    ding_sound = pygame.mixer.Sound("media/ding.wav")
 
     #Error
     error_channel = pygame.mixer.Channel(1)
-    error_sound = pygame.mixer.music("media/error.mp3")
+    error_sound = pygame.mixer.Sound("media/error.wav")
 
     #Footsteps
     walk_channel = pygame.mixer.Channel(2)
-    footstep_sound = pygame.mixer.music("media/wood_footsteps.mp3")
+    footstep_sound = pygame.mixer.Sound("media/wood_footsteps.wav")
 
     #Pumpkin
     pumpkin_collected = False
@@ -559,13 +559,13 @@ def loadChristmasScene():
         
         #If snowball hits bottom of screen, player loses
         if snowball.rect.bottom >= constants.HEIGHT - 10:
-            pygame.mixer.music("media/error.mp3").play()
+            pygame.mixer.Sound("media/error.wav").play()
             current_scene = "christmas_failure"
             break
 
         #If snowball hits snowman, player wins
         if pygame.sprite.collide_rect(snowball, snowman):
-            pygame.mixer.music("media/ding.mp3").play()
+            pygame.mixer.Sound("media/ding.wav").play()
             current_scene = "christmas_aftermath"
             CHRISTMAS_COMPLETE = True
             break
@@ -733,7 +733,7 @@ def loadSecretScene():
         #If collision, play sound and update collected table
         if collision:
             collected_table[collision[0].letter] = True
-            pygame.mixer.music("media/ding.mp3").play()
+            pygame.mixer.Sound("media/ding.wav").play()
 
             if collision[0].letter == "R":
                 letter_r_place.image = pygame.image.load("media/R.png")
@@ -755,7 +755,7 @@ def loadSecretScene():
         
         #Check for collision with enemy, if collision, play sound and fail player
         if pygame.sprite.spritecollide(player, enemy_group, False):
-            pygame.mixer.music("media/error.mp3").play()
+            pygame.mixer.Sound("media/error.wav").play()
             current_scene = "secret_failure"
         
         #Draw cursor

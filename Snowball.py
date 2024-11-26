@@ -27,13 +27,13 @@ class Snowball(pygame.sprite.Sprite):
         if self.rect.left < 0 or self.rect.right > constants.WIDTH:
             self.rect.x = old_x
             self.x_speed *= -1
-            pygame.mixer.Sound("media/bounce.mp3").play()
+            pygame.mixer.Sound("media/bounce.wav").play()
         
         #Check for collision with screen on top and bottom
         if self.rect.top < 0 or self.rect.bottom > constants.HEIGHT:
             self.rect.y = old_y
             self.y_speed *= -1
-            pygame.mixer.Sound("media/bounce.mp3").play()
+            pygame.mixer.Sound("media/bounce.wav").play()
         
         #Check for collision with ice block sprites
         collision = pygame.sprite.spritecollide(self, collision_group, False)
@@ -55,7 +55,7 @@ class Snowball(pygame.sprite.Sprite):
                 collision[0].rect.y = -100
                 collision[0].kill()
 
-                pygame.mixer.Sound("media/ice breaking.mp3").play()
+                pygame.mixer.Sound("media/ice breaking.wav").play()
             #Else, collision is with bar, play sound
             else:
-                pygame.mixer.Sound("media/bounce.mp3").play()
+                pygame.mixer.Sound("media/bounce.wav").play()
