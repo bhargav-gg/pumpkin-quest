@@ -1,3 +1,12 @@
+# How to Run/Requirements
+
+1. Python3 (preferably 3.12)
+2. pygame library (`pip install pygame`)
+3. A monitor capable of rendering/fitting a 800x600 game at 60FPS
+4. `python main.py`
+
+# Image Sources/Attributions
+
 Sprite: https://free-game-assets.itch.io/free-base-4-direction-male-character-pixel-art
 Pumpkins: https://katy-elizabeth.itch.io/halloween-pumpkin-pack
 
